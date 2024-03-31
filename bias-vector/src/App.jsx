@@ -2,8 +2,11 @@ import { useState, useEffect } from 'react';
 import './App.css';
 import './Border.css';
 import axios from "axios";
+import HashLoader from "react-spinners/HashLoader";
 
 function App() {
+  const [loading, setLoading] = useState(0);
+
   const [data, setData] = useState(null); // Define state variable for data
   const [inputUrl, setInputUrl] = useState(""); // State variable to store the input URL
 
@@ -21,6 +24,7 @@ function App() {
   }, []);
 
   const handleAnalyze = async () => {
+    setLoading(1);
     try {
       const response = await axios.post("http://127.0.0.1:1000/analyze", { url: inputUrl });
       console.log("Response from backend:", response.data);
@@ -28,6 +32,7 @@ function App() {
     } catch (error) {
       console.error("Error analyzing URL:", error);
     }
+    setLoading(2);
   };
 
   return (
@@ -70,21 +75,62 @@ function App() {
           <button className="analyze" onClick={handleAnalyze}>
             Analyze
           </button>
+
         </div>
+        <br></br>
+        <div className="spinner">
+          {loading === 0 ? (
+          <div></div>
+        ) : loading === 1 ? (
+          <HashLoader
+          size={30}
+          color={"#FFFFFF"}
+          loading={loading}
+          />
+        ) : loading === 2 ? (
+          <div>
+            {/* Display analyzed data */}
+            {data && (
+              
+              <container className="output">
+
+                <div class="flex-container">
+                  <div class="card">
+                    <h1 className="results">Analysis</h1>
+                    <h2 className="results">bias_score: {data.score} </h2>
+                  </div>
+                  <div class="card">
+                    {data.explanation}
+                  </div>
+                </div>
+
+                <div class="flex-container">
+                  <div class="card">
+                    <h1 className="results">Analysis</h1>
+                    <h2 className="results">bias_score: {data.score} </h2>
+                  </div>
+                  <div class="card">
+                    {data.explanation}
+                  </div>
+                </div>
 
 
-          {/* Display analyzed data */}
-          {data && (
-            <div>
-              <h3>Analysis Result:</h3>
-              <p>
-                bias_score: {data.score}
-                <br></br>
-                explanation: {data.explanation}
-              </p>
+                <div class="flex-container">
+                  <div class="card">
+                    <h1 className="results">Analysis</h1>
+                    <h2 className="results">bias_score: {data.score} </h2>
+                  </div>
+                  <div class="card">
+                    {data.explanation}
+                  </div>
+                </div>
+
+
+              </container>
+            )}
             </div>
-          )}
-
+        ) :(null)}
+        </div>
       </section>
     </body>
   );

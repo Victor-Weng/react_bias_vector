@@ -30,6 +30,7 @@ function References() {
         <li><a className="b" href="https://codepen.io/liyrofx/pen/poVZeEG" target="_blank">Liyrofx Codepen</a></li>
         <li><a className="b" href="https://medium.com/@mintpw/how-to-create-infinite-horizontal-scroll-and-hover-pause-with-pure-css-b052caa683bd" target="_blank">Mintpw Medium</a></li>
         <li><a className="b" href="https://www.davidhu.io/react-spinners/" target="_blank">David Hu Spinners</a></li>
+        <li><a className="b" href="https://github.com/BetterForAll/HonestyMeter" target="_blank">Honesty Meter</a></li>
     </ul>
     </div>
     </body>

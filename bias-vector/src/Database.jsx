@@ -24,43 +24,43 @@ function Database() {
       <div class="carousel-primary">
   <div class="website">
     <h2>CNN</h2>
-    <p class="bias-score">Bias Score: 7.8</p>
+    <p class="bias-score">Bias Score: 78</p>
   </div>
   <div class="website">
     <h2>Fox News</h2>
-    <p class="bias-score">Bias Score: 9.8</p>
+    <p class="bias-score">Bias Score: 98</p>
   </div>
   <div class="website">
     <h2>The New York Times</h2>
-    <p class="bias-score">Bias Score: 5.2</p>
+    <p class="bias-score">Bias Score: 52</p>
   </div>
   <div class="website">
     <h2>BBC</h2>
-    <p class="bias-score">Bias Score: 4.7</p>
+    <p class="bias-score">Bias Score: 47</p>
   </div>
   <div class="website">
     <h2>Reuters</h2>
-    <p class="bias-score">Bias Score: 4.3</p>
+    <p class="bias-score">Bias Score: 43</p>
   </div>
   <div class="website">
     <h2>Al Jazeera</h2>
-    <p class="bias-score">Bias Score: 3.9</p>
+    <p class="bias-score">Bias Score: 39</p>
   </div>
   <div class="website">
     <h2>The Guardian</h2>
-    <p class="bias-score">Bias Score: 3.6</p>
+    <p class="bias-score">Bias Score: 36</p>
   </div>
   <div class="website">
     <h2>Breitbart</h2>
-    <p class="bias-score">Bias Score: 8.2</p>
+    <p class="bias-score">Bias Score: 82</p>
   </div>
   <div class="website">
     <h2>NPR</h2>
-    <p class="bias-score">Bias Score: 3.2</p>
+    <p class="bias-score">Bias Score: 32</p>
   </div>
   <div class="website">
     <h2>Politico</h2>
-    <p class="bias-score">Bias Score: 4.9</p>
+    <p class="bias-score">Bias Score: 49</p>
   </div>
 </div>
 <div class="carousel-secondary">
