@@ -6,7 +6,6 @@ from vertexai.preview.generative_models import GenerativeModel
 import re
 import json
 
-
 def setup():
     current_directory = os.path.dirname(__file__)
     relative_path = 'credentials.json'
@@ -31,17 +30,10 @@ def download_html(url):
         return None
 
 def html_preprocessing(html):
-    # Use BeautifulSoup to parse the HTML
     soup = BeautifulSoup(html, 'html.parser')
-    
-    # Remove script and style tags
     for tag in soup(['script', 'style']):
         tag.decompose()
-    
-    # Get the text from the HTML
     text = soup.get_text(separator=' ')
-    
-    # Remove extra whitespace and newlines
     text = re.sub(r'\s+', ' ', text)
     return text
 
@@ -52,21 +44,29 @@ def generate_response(model, prompt, cleaned_html):
 
 def get_response(url):
     model = setup()
-    with open("prompt.txt", 'r', encoding='utf-8') as file:
-        prompt = file.read()
     html_content = download_html(url)
     if html_content:
         cleaned_content = html_preprocessing(html_content)
-        return json.loads(generate_response(model, prompt, cleaned_content).text)
+        return combine_json_outputs(model, cleaned_content)
     else:
         return "Failed to retrieve HTML content from the provided URL."
 
-if __name__ == "__main__":# List of URLs to download HTML content from
+def combine_json_outputs(model, cleaned_content):
+    combined_output = {}
+    for file_path in ['p1.txt', 'p2.txt', 'p3.txt', 'p4.txt', 'p5.txt', 'p6.txt']:
+        with open(file_path, 'r', encoding='utf-8') as file:
+            prompt = file.read()
+        response = generate_response(model, prompt, cleaned_content)
+        try:
+            combined_output.update(json.loads(response.text))
+        except AttributeError as e:
+            print(f"Error: {e}. Response content does not have parts.")
+    return combined_output
+
+if __name__ == "__main__":
     url1 = 'https://www.vox.com/politics/24114496/benjamin-netanyahu-ultra-orthodox-conscription-coalition-gaza'
     url2 = 'https://www.foxnews.com/politics/chinese-illegal-immigrant-arrested-driving-military-base-california'
 
-
-    # Generate and print response for each URL
     print("Response for article 1:")
     print(get_response(url1))
     print()
