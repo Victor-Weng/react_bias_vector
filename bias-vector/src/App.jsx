@@ -12,7 +12,7 @@ function App() {
 
   const fetchAPI = async () => {
     try {
-      const response = await axios.get("http://127.0.0.1:1000/json");
+      const response = await axios.get("https://bias-vector.onrender.com/json"); //http://127.0.0.1:1000/json
       setData(response.data); // Set the fetched data to the state
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -26,7 +26,7 @@ function App() {
   const handleAnalyze = async () => {
     setLoading(1);
     try {
-      const response = await axios.post("http://127.0.0.1:1000/analyze", { url: inputUrl });
+      const response = await axios.post("https://bias-vector.onrender.com/analyze", { url: inputUrl });
       console.log("Response from backend:", response.data);
       setData(response.data); // Update state with the analyzed data
     } catch (error) {

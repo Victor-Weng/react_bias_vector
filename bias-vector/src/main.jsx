@@ -6,9 +6,12 @@ import About from './About.jsx'
 import Team from './Team.jsx'
 import References from './References.jsx'
 import Feedback from './Feedback.jsx'
+import { disableReactDevTools } from '@fvilers/disable-react-devtools'
 
 import './index.css'
 import './App.css'
+
+if (process.env.NODE_ENV === 'production') disableReactDevTools()
 
 const pathname = window.location.pathname
 
