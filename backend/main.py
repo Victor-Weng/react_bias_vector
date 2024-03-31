@@ -11,8 +11,24 @@ cors = CORS(app, origins='*')  # Can specify origins
 def get_json():
     return jsonify(
         {
-            "score": 0,
-            "explanation": "The article reports on the arrest of a Chinese immigrant after he entered a military base without authorization and ignored orders to leave. The article includes quotes from U.S. officials who express concerns about the potential national security threat posed by Chinese nationals entering the country illegally. The article also includes quotes from migrants who express their desire to make a better life for themselves and their families in the U.S. While the article does include a variety of perspectives, it primarily focuses on the concerns raised by U.S. officials, which could lead readers to believe that the Chinese immigrant arrested is a threat to national security."
+            "Gender Bias Score": "20",
+            "Gender Bias Type": "Male",
+            "Gender Bias Justification": "Justification Here",
+            "Racial Bias Score": "26",
+            "Racial Bias Type": "White",
+            "Racial Bias Justification": "Justification Here",
+            "Economic Bias Score": "60",
+            "Economic Bias Type": "Middle-Income",
+            "Economic Bias Justification": "Justification Here",
+            "Political Bias Score": "21",
+            "Political Bias Type": "Conservative",
+            "Political Bias Justification": "Justification Here",
+            "Societal Bias Score": "39",
+            "Societal Bias Type": "Urban",
+            "Societal Bias Justification": "Justification Here",
+            "Cultural Bias Score": "10",
+            "Cultural Bias Type": "Western",
+            "Cultural Bias Justification": "Justification Here"
         }
     )
 

@@ -94,36 +94,79 @@ function App() {
               
               <container className="output">
 
-                <div class="flex-container">
-                  <div class="card">
-                    <h1 className="results">Analysis</h1>
-                    <h2 className="results">bias_score: {data.score} </h2>
+              <div className="output">
+                <div className="flex-container">
+                  <div className="card">
+                    <h1 className="results">Gender Bias</h1>
+                    <h2 className="results">Bias Score: {data.GenderBiasScore}</h2>
+                    <h2 className="results">Bias Type: {data.GenderBiasType}</h2>
                   </div>
-                  <div class="card">
-                    {data.explanation}
-                  </div>
-                </div>
-
-                <div class="flex-container">
-                  <div class="card">
-                    <h1 className="results">Analysis</h1>
-                    <h2 className="results">bias_score: {data.score} </h2>
-                  </div>
-                  <div class="card">
-                    {data.explanation}
+                  <div className="card">
+                    <h1 className="results">Justification</h1>
+                    <p>{data.GenderBiasJustification}</p>
                   </div>
                 </div>
 
-
-                <div class="flex-container">
-                  <div class="card">
-                    <h1 className="results">Analysis</h1>
-                    <h2 className="results">bias_score: {data.score} </h2>
+                <div className="flex-container">
+                  <div className="card">
+                    <h1 className="results">Racial Bias</h1>
+                    <h2 className="results">Bias Score: {data.RacialBiasScore}</h2>
+                    <h2 className="results">Bias Type: {data.RacialBiasType}</h2>
                   </div>
-                  <div class="card">
-                    {data.explanation}
+                  <div className="card">
+                    <h1 className="results">Justification</h1>
+                    <p>{data.RacialBiasJustification}</p>
                   </div>
                 </div>
+
+                <div className="flex-container">
+                  <div className="card">
+                    <h1 className="results">Economic Bias</h1>
+                    <h2 className="results">Bias Score: {data.EconomicBiasScore}</h2>
+                    <h2 className="results">Bias Type: {data.EconomicBiasType}</h2>
+                  </div>
+                  <div className="card">
+                    <h1 className="results">Justification</h1>
+                    <p>{data.EconomicBiasJustification}</p>
+                  </div>
+                </div>
+
+                <div className="flex-container">
+                  <div className="card">
+                    <h1 className="results">Political Bias</h1>
+                    <h2 className="results">Bias Score: {data.PoliticalBiasScore}</h2>
+                    <h2 className="results">Bias Type: {data.PoliticalBiasType}</h2>
+                  </div>
+                  <div className="card">
+                    <h1 className="results">Justification</h1>
+                    <p>{data.PoliticalBiasJustification}</p>
+                  </div>
+                </div>
+
+                <div className="flex-container">
+                  <div className="card">
+                    <h1 className="results">Societal Bias</h1>
+                    <h2 className="results">Bias Score: {data.SocietalBiasScore}</h2>
+                    <h2 className="results">Bias Type: {data.SocietalBiasType}</h2>
+                  </div>
+                  <div className="card">
+                    <h1 className="results">Justification</h1>
+                    <p>{data.SocietalBiasJustification}</p>
+                  </div>
+                </div>
+
+                <div className="flex-container">
+                  <div className="card">
+                    <h1 className="results">Cultural Bias</h1>
+                    <h2 className="results">Bias Score: {data.CulturalBiasScore}</h2>
+                    <h2 className="results">Bias Type: {data.CulturalBiasType}</h2>
+                  </div>
+                  <div className="card">
+                    <h1 className="results">Justification</h1>
+                    <p>{data.CulturalBiasJustification}</p>
+                  </div>
+                </div>
+              </div>
 
 
               </container>

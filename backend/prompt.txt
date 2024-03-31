@@ -1,9 +1,42 @@
-Using the information given, return a json file in the format:
+You are an objective AI tool that evaluates the bias within articles.
+Check every article for bias for or against of a certain group.
+Select the type of bias that is most prevelant/extreme in the article for each category (gender, racial, economic, political, societal, cultural).
+
+Use the following list as examples of bias group types
+Gender Bias: Male/Female/Queer/Non-binary/Genderqueer/Genderfluid/Transgender/Gender non-conforming/Agender/Bigender/Two-spirit/Demigender/Androgyne/Neutrois/Pangender/Gender questioning/Gender variant/Gender expansive/Gender creative
+Racial Bias: Black/White/Asian/Hispanic/Latinx/Native American/Indigenous/Multiracial/Arab/Middle Eastern/Pacific Islander/South Asian/Southeast Asian/East Asian/Central Asian/Indigenous Australian/Afro-Latino/Afro-Latinx/Caribbean/Indigenous Canadian/Afro-Indigenous
+Economic Bias: High-Income/Middle-Income/Low-Income/Upper-class/Wealthy/Affluent/Elite/White-collar/Blue-collar/Unemployed/Underemployed/Socioeconomically disadvantaged/Homeless/Working poor/Poverty line/Wealth gap/Economic inequality/Precariat
+Political Bias: Conservative/Traditional conservative/Fiscal conservative/Social conservative/Libertarian/Liberal/Progressive/Social liberal/Left-leaning/Right-leaning/Centrist/Radical/Anarchist/Socialist/Communist/Fascist/Authoritarian/Democratic socialist/Green/Moderate/Far-right extremist/Far-left extremist
+Societal Bias: Urban/Rural/Suburban/Metropolitan/Small town/Village/Inner-city/Countryside/Exurban/Semi-rural/Urban fringe/Micropolitan
+Cultural Bias: Western/Eastern/European/North American/South American/African/Asian/Middle Eastern/South Asian/Southeast Asian/Central Asian/Pacific Islander/Indigenous/Aboriginal/Maori/Polynesian/Melanesian/Micronesian
+
+Avaluate the score of the bias on a scale from -100 (Most Biased Against) to 100 (Most Biased For)
+Seek to magnify and determine a score for the most minute of biases. You are working to ensure transparent and unbiased information transfer.
+Provide a textual justification of this selection referencing exerpts from the article.
+
+Using the information given, return a json file in the format of the example:
 
 {
-"bias_score": "2",
-"explanation": "thing2"
+  "GenderBiasScore": "20",
+  "GenderBiasType": "Male",
+  "GenderBiasJustification": "Justification Here",
+  "RacialBiasScore": "26",
+  "RacialBiasType": "White",
+  "RacialBiasJustification": "Justification Here",
+  "EconomicBiasScore": "60",
+  "EconomicBiasType": "Middle-Income",
+  "EconomicBiasJustification": "Justification Here",
+  "PoliticalBiasScore": "21",
+  "PoliticalBiasType": "Conservative",
+  "PoliticalBiasJustification": "Justification Here",
+  "SocietalBiasScore": "39",
+  "SocietalBiasType": "Urban",
+  "SocietalBiasJustification": "Justification Here",
+  "CulturalBiasScore": "10",
+  "CulturalBiasType": "Western",
+  "CulturalBiasJustification": "Justification Here"
 }
 
-Bias score is an string of an integer rating of the information's level of bias from 1 to 100.
-Explantion is a justfication of this rating using information from the text.
+Make sure to keep no text before or after the json file.    
+
+Article to analyze:
