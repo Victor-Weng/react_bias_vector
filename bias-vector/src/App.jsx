@@ -1,37 +1,41 @@
-import { useState, useEffect } from 'react'
-import './App.css'
-import './Border.css'
+import { useState, useEffect } from 'react';
+import './App.css';
+import './Border.css';
+import axios from "axios";
 
 function App() {
-  // loading logo
-  const [loading, setLoading] = useState(false);
+  const [data, setData] = useState(null); // Define state variable for data
+  const [inputUrl, setInputUrl] = useState(""); // State variable to store the input URL
+
+  const fetchAPI = async () => {
+    try {
+      const response = await axios.get("http://127.0.0.1:1000/json");
+      setData(response.data); // Set the fetched data to the state
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
 
   useEffect(() => {
-    setLoading(true)
-  }, [])
+    fetchAPI();
+  }, []);
 
-
-  const [count, setCount] = useState(0)
-  // Declare dynamic variable and set variable function and default value. To change variables in react,
-  // you need to use a useState hook
-  const [link, setLink] = useState("www.google.com") 
-  const analyze = () => { // create function "analyze"
-    // WHAT HAPPENS WHEN YOU PRESS THE BUTTON that has onClick = {analyze}
-
-    alert(link) // to show alert for the link
-  }
-  const change = event => { //create function "change" that lets you change the value of the input box
-    // pass in the event and get the value. Assign it back to the setState
-    setLink(event.target.value)
-  }
+  const handleAnalyze = async () => {
+    try {
+      const response = await axios.post("http://127.0.0.1:1000/analyze", { url: inputUrl });
+      console.log("Response from backend:", response.data);
+      setData(response.data); // Update state with the analyzed data
+    } catch (error) {
+      console.error("Error analyzing URL:", error);
+    }
+  };
 
   return (
     <body>
       <header>
-        <img src="src\images\logo_white.png" class="logo" alt="logo">
-        </img>
+        <img src="src\images\logo_white.png" className="logo" alt="logo" />
         <nav>
-          <ul class="nav_links">
+          <ul className="nav_links">
             <li><a href="index.html">Home</a></li>
             <li><a href="/../database.html">Database</a></li>
             <li><a href="/../about.html">About</a></li>
@@ -39,37 +43,51 @@ function App() {
             <li><a href="/../references.html">References</a></li>
           </ul>
         </nav>
-        <a class="cta" href="/../feedback.html"><button>Feedback</button></a>
+        <a className="cta" href="/../feedback.html"><button>Feedback</button></a>
       </header>
       <section>
         <div>
-          <h1 className="title">Bias 
-          Vector</h1>
+          <h1 className="title">Bias Vector</h1>
           <div className="b">
-          Find the bias in your source. Powered by Google Gemini.
+            Find the bias in your source. Powered by Google Gemini.
           </div>
         </div>
 
-        <div class="center-box">
-        <div class="animated-border-box-glow"></div>
-            <div class="animated-border-glow">
-          </div>  
-          <div class="highz">
-                <input type="text" value={link} onChange={change}/>
-              </div>    
+        <div className="center-box">
+          <div className="animated-border-box-glow"></div>
+          <div className="animated-border-glow"></div>
+          <div className="highz">
+            <input 
+              type="text" 
+              placeholder="Enter a URL" 
+              value={inputUrl} 
+              onChange={(e) => setInputUrl(e.target.value)} // Update state when input changes
+            />
+          </div>
         </div>
-        <br/>
+        <br />
         <div>
-          <button className="analyze" onClick = {analyze}>
+          <button className="analyze" onClick={handleAnalyze}>
             Analyze
-          </button> 
+          </button>
         </div>
-        <div>
-          
-        </div>
+
+
+          {/* Display analyzed data */}
+          {data && (
+            <div>
+              <h3>Analysis Result:</h3>
+              <p>
+                bias_score: {data.score}
+                <br></br>
+                explanation: {data.explanation}
+              </p>
+            </div>
+          )}
+
       </section>
     </body>
-  )
+  );
 }
 
-export default App
+export default App;

@@ -1,9 +1,0 @@
-Using the information given, return a json file in the format:
-
-{
-"bias_score": 2,
-"explanation": "thing2"
-}
-
-Bias score is an integer rating of the information's level of bias from 1 to 100.
-Explantion is a justfication of this rating using information from the text.
